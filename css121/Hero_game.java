@@ -5,7 +5,7 @@
 
 // hero x = 2 y = 0
 // monster x 10-2 y = 4
-public class Bonus {
+public class Hero_game {
 
     public static void main(String[] args) {
         int n = 10;
