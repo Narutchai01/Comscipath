@@ -1,7 +1,7 @@
-  for (int i = 0; i < n; i++)                            // สร้างเมตริก 10*10
-    {
-        for (int j = 0; j < n; j++)
-        {
-            map[i][j] = 0;
-        };
+double AvrScore(Student student[],int size){
+    double avr_score = 0;
+    for(int i=0; i<size; i++){
+        avr_score+=student[i].score;
     }
+    return avr_score/size;
+}
