@@ -5,7 +5,7 @@ class Students {
     int score;
 }
 
-public class Scorestudent {
+public class ScoreStudent {
     public static void main(String[] args) {
         Students[] student = new Students[10];
         String[] nameStudent = { "Art", "Fluk", "Ohm", "Mungkorn", "James", "Bell", "Pub", "Keng", "Leo", "Shogun" };
