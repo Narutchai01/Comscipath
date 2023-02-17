@@ -1,4 +1,3 @@
-
 class Node {
     String name;
     int score;
@@ -51,10 +50,6 @@ class DoublyLinkedList {
 
     public void printList() {
         Node current = head;
-        // while (current != null) {
-        // System.out.println(current.name + ": " + current.score);
-        // current = current.next;
-        // }
         for (int i = 0; i < 10; i++) {
             System.out.println(current.name + ": " + current.score);
             current = current.next;
