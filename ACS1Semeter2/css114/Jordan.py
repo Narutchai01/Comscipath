@@ -32,8 +32,8 @@ def gauss_jordan(A, b):
     return x
 
 # A - coefficient matrix
-A = [[1, 1, -1], [1, -1, 2], [2, 1, 1]]
-b = [7, 3, 9]
+A = [[1,4,9],[4,9,16],[9,16,25]]
+b = [10,14,18]
 print(gauss_jordan(A, b))
 
 # Output - [6.0, -1.0, -2.0]

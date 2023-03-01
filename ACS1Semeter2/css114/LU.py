@@ -1,67 +1,40 @@
-# Python3 Program to decompose
-# a matrix into lower and
-# upper triangular matrix
-MAX = 100
+import numpy as np
 
+def LU_decomposition(A):
+    n = A.shape[0]
+    L = np.identity(n)
+    U = A.copy()
+    
+    for k in range(n-1):
+        for i in range(k+1, n):
+            L[i,k] = U[i,k]/U[k,k]
+            for j in range(k+1, n):
+                U[i,j] = U[i,j] - L[i,k]*U[k,j]
+            U[i,k] = 0
+    
+    return L, U
+def LU_solve(L, U, b):
+    y = np.linalg.solve(L, b)
+    x = np.linalg.solve(U, y)
+    
+    return x
+A = np.array([[1,1,-1], [1, -2, 3], [2, 3, 1]])
+b = np.array([4,-6,7])
+A = A.astype(np.float64)
+b = b.astype(np.float64)
 
-def luDecomposition(mat, n):
+# Perform LU decomposition
+L, U = LU_decomposition(A)
 
-    lower = [[0 for x in range(n)]
-             for y in range(n)]
-    upper = [[0 for x in range(n)]
-             for y in range(n)]
+# Solve the linear system Ax = b
+x = LU_solve(L, U, b)
 
-    # Decomposing matrix into Upper
-    # and Lower triangular matrix
-    for i in range(n):
-
-        # Upper Triangular
-        for k in range(i, n):
-
-            # Summation of L(i, j) * U(j, k)
-            sum = 0
-            for j in range(i):
-                sum += (lower[i][j] * upper[j][k])
-
-            # Evaluating U(i, k)
-            upper[i][k] = mat[i][k] - sum
-
-        # Lower Triangular
-        for k in range(i, n):
-            if (i == k):
-                lower[i][i] = 1  # Diagonal as 1
-            else:
-
-                # Summation of L(k, j) * U(j, i)
-                sum = 0
-                for j in range(i):
-                    sum += (lower[k][j] * upper[j][i])
-
-                # Evaluating L(k, i)
-                lower[k][i] = int((mat[k][i] - sum) /upper[i][i])
-
-    # setw is for displaying nicely
-    print("Lower Triangular\t\tUpper Triangular")
-
-    # Displaying the result :
-    for i in range(n):
-
-        # Lower
-        for j in range(n):
-            print(lower[i][j], end="\t")
-        print("", end="\t")
-
-        # Upper
-        for j in range(n):
-            print(upper[i][j], end="\t")
-        print("")
-
-
-# Driver code
-mat = [[2, -1, -2],
-       [-4, 6, 3],
-       [-4, -2, 8]]
-
-luDecomposition(mat, 3)
-
-# This code is contributed by mits
+# Print the solution vector
+print('The L is')
+print(L)
+print()
+print('The U is')
+print(U)
+print()
+print('The Solve is')
+print(x)
