@@ -1,0 +1,13 @@
+p .alert {
+    border: 1px solid black;
+}
+span.alert.stop{
+    background-color: red;
+}
+
+#special {
+    background-color: yellow;
+}
+span.alert.go {
+    background-color: green;
+}

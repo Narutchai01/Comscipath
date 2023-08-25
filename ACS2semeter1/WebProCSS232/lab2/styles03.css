@@ -1,0 +1,12 @@
+.container  p:first-child{
+    color: red;
+}
+a{
+    color: green;
+}
+
+tr:nth-child(2n){
+    background-color: black;
+    color: white;
+}
+    

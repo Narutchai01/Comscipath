@@ -1,64 +1,66 @@
-create table themepark (
-park_code varchar(10)  primary key,
-park_name varchar(35) not null,
-park_city varchar(50) not null,
-park_country char(2) not null
-);
-
-create table employee(
-emp_num numeric(4)  primary key,
-emp_title varchar(4),
-emp_lanme varchar(15) not null,
-emp_fname varchar(15) not null,
-emp_dob date not null,
-emp_haire_date date not null,
-emp_areacode varchar(4) not null,
-emp_phone varchar(12) not null,
-park_code varchar(10) not null,
-foreign key(park_code) references themepark(park_code)
-);
-
-create table ticket (
-ticket_no numeric(10) primary key,
-ticket_price numeric(4,2) not null,
-ticket_type varchar(10) not null,
-park_code varchar(10) not null,
-foreign key (park_code) references themepark(park_code)
-);
-
-create table attraction (
-attract_no numeric(10) primary key,
-park_code varchar(10) not null,
-attract_name varchar(35) not null,
-attract_age numeric(3) default 0,
-attract_capacity numeric(3) not null
-);
 
 
-create table hour (
-emp_num numeric(4) ,
-attract_no numeric(10) ,
-hour_per_attract numeric(2) not null,
-hour_rate numeric(4,2) not null,
-date_worked date not null,
-foreign key(emp_num) references employee(emp_num),
-foreign key(attract_no) references attraction(attract_no)
-);
+CREATE TABLE THEMEPARK(
+	PARK_CODE VARCHAR(10) NOT NULL PRIMARY KEY,
+	PARK_NAME VARCHAR(35) NOT NULL,
+	PARK_CITY VARCHAR(50) NOT NULL,
+	PARK_COUNTRY CHAR(2) NOT NULL 
+	);
 
-create table sales (
-transaction_no numeric(10) primary key,
-park_code varchar(10) not null,
-sale_date date not null,
-foreign key (park_code) references themepark(park_code)
-);
+CREATE TABLE EMPLOYEE( 
+	EMP_NUM NUMERIC(4) NOT NULL PRIMARY KEY, 
+	EMP_TITLE VARCHAR(4), 
+	EMP_LNAME VARCHAR(15) NOT NULL, 
+	EMP_FNAME VARCHAR(15) NOT NULL, 
+	EMP_DOB DATE NOT NULL, 
+	EMP_HIRE_DATE DATE NOT NULL, 
+	EMP_AREACODE VARCHAR(4) NOT NULL, 
+	EMP_PHONE VARCHAR(12) NOT NULL, 
+	PARK_CODE VARCHAR(10) NOT NULL, 
+	FOREIGN KEY(PARK_CODE) REFERENCES THEMEPARK(PARK_CODE)
+	);
 
-create table salesline (
-transaction_no numeric(10),
-line_no numeric(2) not null,
-ticket_no numeric(10) not null,
-line_qty numeric(4) not null,
-line_price numeric(9,2) not null,
-foreign key (transaction_no) references sales(transaction_no),
-foreign key (ticket_no) references ticket(ticket_no)
-);
+CREATE TABLE TICKET(
+	TICKET_NO NUMERIC(10) NOT NULL PRIMARY KEY,
+	TICKET_PRICE NUMERIC(4,2) NOT NULL,
+	TICKET_TYPE VARCHAR(10) NOT NULL,
+	PARK_CODE VARCHAR(10) NOT NULL,
+	FOREIGN KEY(PARK_CODE) REFERENCES THEMEPARK(PARK_CODE)
+	);
 
+CREATE TABLE ATTRACTION(
+	ATTRACT_NO NUMERIC(10) NOT NULL PRIMARY KEY,
+	PARK_CODE VARCHAR(10) NOT NULL,
+	ATTRACT_NAME VARCHAR(35) NOT NULL,
+	ATTRACT_AGE NUMERIC(3) NOT NULL,
+	ATTRACT_CAPACITY NUMERIC(3) NOT NULL,
+	FOREIGN KEY(PARK_CODE) REFERENCES THEMEPARK(PARK_CODE)
+	);
+
+CREATE TABLE HOUR(
+	EMP_NUM NUMERIC(4) NOT NULL ,
+    ATTRACT_NO NUMERIC(10) NOT NULL ,
+    HOURS_PER_ATTRACT NUMERIC(2) NOT NULL,
+    HOUR_RATE NUMERIC(4,2) NOT NULL,
+    DATE_WORKED DATE NOT NULL,
+    PRIMARY KEY(EMP_NUM,ATTRACT_NO),
+    FOREIGN KEY(EMP_NUM) REFERENCES EMPLOYEE(EMP_NUM),
+    FOREIGN KEY(ATTRACT_NO) REFERENCES ATTRACTION(ATTRACT_NO)
+    );
+    
+CREATE TABLE SALES(
+	TRANSACTION_NO NUMERIC NOT NULL PRIMARY KEY,
+    PARK_CODE VARCHAR(10) NOT NULL,
+    SALE_DATE DATE NOT NULL,
+    FOREIGN KEY(PARK_CODE) REFERENCES THEMEPARK(PARK_CODE)
+    );
+    
+CREATE TABLE SALESLINE(
+	TRANSACTION_NO NUMERIC NOT NULL PRIMARY KEY,
+    LINE_NO NUMERIC(2) NOT NULL,
+    TICKET_NO NUMERIC(10) NOT NULL,
+    LINE_QTY NUMERIC (4) NOT NULL,
+    LINE_PRICE NUMERIC(9.2) NOT NULL,
+    FOREIGN KEY(TRANSACTION_NO) REFERENCES SALES(TRANSACTION_NO),
+    FOREIGN KEY(TICKET_NO) REFERENCES TICKET(TICKET_NO)
+    );
