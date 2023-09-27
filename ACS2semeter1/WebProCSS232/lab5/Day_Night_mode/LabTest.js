@@ -1,10 +1,13 @@
-console.log('LabTest.js');
+const btn = document.querySelector('.DayLight');
 
-document.querySelector('.DayLight').addEventListener('click', function () {
+const ChangeTheme = () => {
     document.querySelector('.contecnt').classList.toggle('contecnt-active');
-    if (this.innerHTML === 'Activate the night mode') {
-        this.innerHTML = 'Activate the day mode';
+    document.querySelector('span').style.color = 'blue';
+    if (document.querySelector('.contecnt-active')) {
+        btn.innerHTML = 'Activate the day mode';
     } else {
-        this.innerHTML = 'Activate the night mode';
+        btn.innerHTML = 'Activate the night mode';
     }
-});
+}
+
+btn.addEventListener('click', ChangeTheme);
