@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Poppins:wght@300&family=Roboto&display=swap');
+
 * {
     margin: 0%;
     padding: 0%;
@@ -8,6 +10,7 @@ body {
     background: linear-gradient(124deg, rgba(175, 175, 177, 0.5) 0%, rgba(175, 175, 177, 0.5) 100%), url(bg.webp);
     background-size: contain;
     background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header-container {
@@ -184,7 +187,7 @@ h3 {
         width: 100%;
     }
     .item-thumbnail> img{
-        width: 350px;
+        width: 100%;
     }
     .topic-area{
         display: flex;
