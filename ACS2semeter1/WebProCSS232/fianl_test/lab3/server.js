@@ -6,7 +6,7 @@ const {uuid} = require('uuidv4');
 const {MongoClient} = require('mongodb');
 
 
-const client = new MongoClient('mongodb+srv://123:123@cluster0.xy9xqw8.mongodb.net/');
+const client = new MongoClient('mongo_URL');
 
 const ConnectDB = async () => {
     try {
