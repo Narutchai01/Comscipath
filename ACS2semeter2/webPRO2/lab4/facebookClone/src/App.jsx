@@ -49,7 +49,6 @@ function App() {
     console.log(register);
   };
 
-  console.log();
 
   return (
     <>
@@ -127,7 +126,7 @@ function App() {
             <input
               type="radio"
               name="Gender"
-              value="Female"
+              value="Male"
               onChange={handleChange}
             />
           </label>
