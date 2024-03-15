@@ -44,52 +44,54 @@ function App() {
         <h1>Gender : {dataUser.Gender}</h1>
         <h1>Image : {dataUser.image ? dataUser.image.name : "not have"}</h1>
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          <h1>Update Profile</h1>
-          <input type="file" onChange={handleFile} />
-        </label>
-        <label>
-          Name
-          <input type="text" name="Name" onChange={handleChange} />
-        </label>
-        <label>
-          Username
-          <input type="text" name="Username" onChange={handleChange} />
-        </label>
-        <label>
-          Bio
-          <textarea
-            name="Bio"
-            cols="30"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
-        </label>
-        <div>
-          <h1>Gender</h1>
+      <fieldset>
+      update profile
+        <form onSubmit={handleSubmit}>
           <label>
-            Female
-            <input
-              type="radio"
-              name="Gender"
-              value="Female"
-              onChange={handleChange}
-            />
+            <h1>Update Profile</h1>
+            <input type="file" onChange={handleFile} />
           </label>
           <label>
-            Male
-            <input
-              type="radio"
-              name="Gender"
-              value="Male"
-              onChange={handleChange}
-            />
+            Name
+            <input type="text" name="Name" onChange={handleChange} />
           </label>
-        </div>
-        <button>Update</button>
-      </form>
+          <label>
+            Username
+            <input type="text" name="Username" onChange={handleChange} />
+          </label>
+          <label>
+            Bio
+            <textarea
+              name="Bio"
+              cols="30"
+              rows="10"
+              onChange={handleChange}
+            ></textarea>
+          </label>
+          <div>
+            <h1>Gender</h1>
+            <label>
+              Female
+              <input
+                type="radio"
+                name="Gender"
+                value="Female"
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Male
+              <input
+                type="radio"
+                name="Gender"
+                value="Male"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <button>Update</button>
+        </form>
+      </fieldset>
     </>
   );
 }
