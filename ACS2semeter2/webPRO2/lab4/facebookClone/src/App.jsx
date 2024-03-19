@@ -28,7 +28,6 @@ function App() {
   });
 
   const years = [];
-
   const getCurrentYear = () => {
     const currentYear = new Date().getFullYear();
     for (let i = currentYear; i >= currentYear - 100; i--) {
@@ -46,9 +45,9 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   await console.log("register");
     console.log(register);
   };
-
 
   return (
     <>
@@ -91,7 +90,7 @@ function App() {
           <select onChange={handleChange} name="day">
             {Array.from({ length: 31 }, (_, index) => (
               <option key={index} value={index + 1}>
-                {index+1}
+                {index + 1}
               </option>
             ))}
           </select>

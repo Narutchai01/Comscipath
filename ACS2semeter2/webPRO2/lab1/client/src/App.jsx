@@ -9,7 +9,7 @@ function App() {
     if (isRunning && time > 0) {
       const interval = setInterval(() => {
         setTime(time- 1);
-      }, 1000);
+      },1000);
       return () => clearInterval(interval);
     }
   }, [isRunning, time]);
