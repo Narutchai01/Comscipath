@@ -44,16 +44,16 @@ class NotificationFactory {
 function App() {
   const factory = new NotificationFactory();
 
-  const email = factory.createNotification("email");
+  const noti = factory.createNotification("email");
 
   const handleSendNotification = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { name } = e.target as HTMLButtonElement;
     if (name === "email") {
-      alert(email.send("Email Notification"));
+      alert(noti.send("Email Notification"));
     } else if (name === "sms") {
-      alert(email.send("SMS Notification"));
+      alert(noti.send("SMS Notification"));
     } else if (name === "push") {
-      alert(email.send("Push Notification"));
+      alert(noti.send("Push Notification"));
     }
   };
 
