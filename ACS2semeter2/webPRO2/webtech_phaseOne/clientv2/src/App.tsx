@@ -1,54 +1,67 @@
-import React from "react";
-
-interface CommenntComponent {
-  comment: string;
-  showComment(prefix: string): React.ReactNode;
+interface BlongInsterface {
+  title: string;
+  description: string;
+  showComPonents: React.ReactNode;
 }
 
-class Comment implements CommenntComponent {
-  constructor(public comment: string) {}
-  showComment(prefix: string): React.ReactNode {
-    return (
-      <div>
-        {prefix} {this.comment}
-      </div>
-    );
+class Blog implements BlongInsterface {
+  title: string;
+  description: string;
+  showComPonents: React.ReactNode;
+
+  constructor(
+    title: string,
+    description: string,
+    showComPonents: React.ReactNode
+  ) {
+    this.title = title;
+    this.description = description;
+    this.showComPonents = showComPonents;
   }
 }
 
-class Post implements CommenntComponent {
-  chidern: CommenntComponent[] = [];
+class Catagonry {
+  name: string;
+  blogs: Blog[] = [];
 
-  constructor(public comment: string) {}
-
-  addComponent(component: CommenntComponent) {
-    this.chidern.push(component);
+  constructor(name: string, blogs: Blog[]) {
+    this.name = name;
+    this.blogs = blogs;
   }
 
-  showComment(prefix: string): React.ReactNode {
-    return (
-      <div>
-        {prefix} {this.comment}
-        {this.chidern.map((child) => child.showComment(prefix + "-"))}
+  addBlog(blog: Blog) {
+    this.blogs.push(blog);
+  }
+
+  showBlogs() {
+    return this.blogs.map((blog, index) => (
+      <div key={index}>
+        <h2>{blog.title}</h2>
+        <p>{blog.description}</p>
+        {blog.showComPonents}
       </div>
-    );
+    ));
   }
 }
 
 function App() {
-  const post = new Post("Post");
-  const comment1 = new Comment("Comment 1");
-  const comment2 = new Comment("Comment 2");
 
-  post.addComponent(comment1);
+  const blog1 = new Blog('Blog 1', 'Description 1', <div>Blog 1</div>);
+  const blog2 = new Blog('Blog 2', 'Description 2', <div>Blog 2</div>);
+  const blog3 = new Blog('Blog 3', 'Description 3', <div>Blog 3</div>);
 
-  const post2 = new Post("Post 2");
-  post2.addComponent(comment2);
+
+  const catagory1 = new Catagonry('Catagory 1', [blog1, blog2]);
+
+  catagory1.addBlog(blog3);
+
+  
+
   return (
-    <>
-      {post.showComment("")}
-      {post2.showComment("")}
-    </>
+    <div>
+      {catagory1.showBlogs()}
+      <h1>App</h1>
+    </div>
   );
 }
 
